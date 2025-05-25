@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Birthday Card Generator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+    <h1>Birthday Card Generator</h1>
+</header>
+     
+<div class="container">
+    <div class="content-box">
+        <p> Someone special turning one year older? Send them a card for their special day! </p>
+        <form method="post" action="http://localhost:3000/submit" id="cardForm">
+            <input type="hidden" name="card_type" value="Birthday Card">
+            <label for="name">Recipient's Name:</label>
+            <input type="text" id="name" name="recipient_name">
+            <br>
+            <br>
+            <label for="message">Message:</label>
+            <textarea id="message" name="message"></textarea>
+            <input type="submit" value="Generate Card" class="btn">
+            <button id="downloadPdf" class="btn hidden">Download PDF</button>
+
+        </form>
+    </div>
+</div>
+
+
+<div class="image-container">
+    <img src="Birthday_Card.png" alt="Birthday Card" class="center-image">
+</div>
+
+<div class="image-container" style="display:none;">
+    
+    <!-- The generated image will be inserted here -->
+</div>
+
+<script src="/script.js"></script>
+
+</body>
+</html>

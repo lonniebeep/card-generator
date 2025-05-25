@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Three Card Generator</title>
+    <link rel="stylesheet" href="style.css">
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Toggle sidebar
+            document.getElementById('toggleButton').addEventListener('click', function() {
+                document.getElementById('sidebar').classList.toggle('expanded');
+            });
+
+            // Popup for email input
+            const emailPopup = document.getElementById('emailPopup');
+            const emailForm = document.getElementById('emailForm');
+            const emailInput = document.getElementById('emailInput');
+            const emailError = document.getElementById('emailError');
+
+            // Check if email is in localStorage
+            const userEmail = localStorage.getItem('userEmail');
+            if (!userEmail) {
+                emailPopup.style.display = 'block';
+            }
+
+            emailForm.addEventListener('submit', function(event) {
+                event.preventDefault();
+
+                const enteredEmail = emailInput.value;
+
+                // Form validation
+                const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+                if (!emailPattern.test(enteredEmail)) {
+                    emailError.textContent = 'Enter a valid email!';
+                    return;
+                }
+
+                // Check if email is already stored in localStorage
+                const storedEmail = localStorage.getItem('userEmail');
+                if (storedEmail) {
+                    alert('Welcome back!');
+                } else {
+                    localStorage.setItem('userEmail', enteredEmail);
+                    alert('You are added to our email list!');
+                }
+
+                // Close popup
+                emailPopup.style.display = 'none';
+            });
+        });
+
+        function closePopup() {
+            document.getElementById('emailPopup').style.display = 'none';
+        }
+    </script>
+</head>
+<body>
+    <header class="header-container">
+        <h1>Three Card Generator</h1>
+        <button id="toggleButton">
+            <img src="sidebar-2.png" style="width: 50px; height: 50px;">
+        </button>
+    </header>
+    <!-- Popup for Email Input -->
+    <div id="emailPopup" class="email-popup">
+        <div class="email-popup-content">
+            <span class="close-btn" onclick="closePopup()">&times;</span>
+            <h2>Enter your email</h2>
+            <form id="emailForm">
+                <input type="email" id="emailInput" placeholder="johndoe@gmail.com" required>
+                <button type="submit">Submit</button>
+            </form>
+            <p id="emailError" class="error-message"></p>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="product-row">
+            <div class="product-box">
+                <img src="Birthday_Card.png" alt="Birthday Card">
+                <h2><a href="birthdaycard-generator.html">Birthday Card!</a></h2>
+                <p>a card for those turning a year older. (⸝⸝ᵕᴗᵕ⸝⸝)</p>
+            </div>
+            <div class="product-box">
+                <img src="Romance_Card.png" alt="Romance Card">
+                <h2><a href="romancecard-generator.html">Romance Card &hearts;</a></h2>
+                <p>a card for you and your lover. <br>(´｡• ᵕ •｡`)</p>
+            </div>
+        </div>
+        <div class="product-row">
+            <div class="product-box">
+                <img src="Friendship_Card.png" alt="Friendship Card">
+                <h2><a href="friendshipcard-generator.html">Friendship Card &#9786;</a></h2>
+                <p>a card for a true friend. ₍ᐢ.  ̫.ᐢ₎</p>
+            </div>
+        </div>
+
+        <div class="sidebar minimized" id="sidebar">
+            <button>
+                <a href="contact-info.html" class="sidebar-btn">Contact <br> Information</a>
+            </button>
+            <button>
+                <a href="card-request.html" class="sidebar-btn">Unique Card Request</a>
+            </button>
+            <button>
+                <a href="https://patreon.com/ThreeCardGenerator" class="sidebar-btn" target="_blank">
+                    <img src="money-bag.svg" style="width: 30px; height: 20px;"> 
+                    Donate
+                </a>
+            </button>
+        </div>
+
+        <div class="gif-container" style="display: flex; justify-content: center; align-items: center; height: 100vh;">
+            <img src="footer_gif.gif" alt="Lollipop GIF">
+        </div>
+
+        <div class="copyright-container">
+            <p>&copy; 2024 Three Card Generator. All rights reserved.</p>
+        </div>
+    </div>
+</body>
+</html>

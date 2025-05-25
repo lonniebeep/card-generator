@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Romance Card Generator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+    <h1>Romance Card Generator</h1>
+    </header>
+     
+     <div class="container">
+      <div class="content-box">
+      <p> Want to show a certain someone your love? Send them with a personal message!  </p>
+      <form method="post" action="http://localhost:3000/submit">
+        <input type="hidden" name="card_type" value="Romance Card">
+        <label for="name">Recipient's Name:</label>
+        <input type="text" id="name" name="recipient_name">
+        <br>
+        <br>
+        <label for="message">Message:</label>
+        <textarea id="message" name="message"></textarea>
+        <button type="submit" class="btn">Generate Card</button>
+        <button id="downloadPdf" class="btn hidden">Download PDF</button>
+    </form>
+    </div>
+    </div>
+
+    
+
+    <div class="image-container">
+        <img src="Romance_Card.png" alt="Romance Card" class="center-image">
+    </div>
+    <div class="image-container" style="display:none;">
+    
+        <!-- generated image -->
+    </div>
+
+
+    <div id="card"></div>
+    <script src="/script.js"></script>
+   
+    
+</body>
+</html>
