@@ -9,6 +9,6 @@
   "dependencies": {
     "express": "^5.1.0",
     "mysql": "^2.18.1",
-    "canvas": "^2.11.2"   // Make sure to include canvas
+    "canvas": "^2.11.2"  
   }
 }
