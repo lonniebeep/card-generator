@@ -7,8 +7,9 @@
     "start": "node server.js"
   },
   "dependencies": {
+    "canvas": "^2.11.2",
     "express": "^5.1.0",
     "mysql": "^2.18.1",
-    "canvas": "^2.11.2"  
+    "pg": "^8.16.0"
   }
 }
