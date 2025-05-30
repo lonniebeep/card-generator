@@ -7,18 +7,16 @@
     <link rel="stylesheet" href="style.css">
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Toggle sidebar
             document.getElementById('toggleButton').addEventListener('click', function() {
                 document.getElementById('sidebar').classList.toggle('expanded');
             });
 
-            // Popup for email input
             const emailPopup = document.getElementById('emailPopup');
             const emailForm = document.getElementById('emailForm');
             const emailInput = document.getElementById('emailInput');
             const emailError = document.getElementById('emailError');
-
             const userEmail = localStorage.getItem('userEmail');
+
             if (!userEmail) {
                 emailPopup.style.display = 'block';
             }
@@ -33,8 +31,7 @@
                     return;
                 }
 
-                const storedEmail = localStorage.getItem('userEmail');
-                if (storedEmail) {
+                if (userEmail) {
                     alert('Welcome back!');
                 } else {
                     localStorage.setItem('userEmail', enteredEmail);
@@ -54,11 +51,10 @@
     <header class="header-container">
         <h1>Three Card Generator</h1>
         <button id="toggleButton">
-            <img src="sidebar-2.png" style="width: 50px; height: 50px;">
+            <img src="img/sidebar-2.png" style="width: 50px; height: 50px;">
         </button>
     </header>
 
-    <!-- Popup for Email Input -->
     <div id="emailPopup" class="email-popup">
         <div class="email-popup-content">
             <span class="close-btn" onclick="closePopup()">&times;</span>
@@ -74,19 +70,19 @@
     <div class="container">
         <div class="product-row">
             <div class="product-box">
-                <img src="Birthday_Card.png" alt="Birthday Card">
+                <img src="img/Birthday_Card.png" alt="Birthday Card">
                 <h2><a href="birthdaycard-generator.html">Birthday Card!</a></h2>
                 <p>a card for those turning a year older. (⸝⸝ᵕᴗᵕ⸝⸝)</p>
             </div>
             <div class="product-box">
-                <img src="Romance_Card.png" alt="Romance Card">
+                <img src="img/Romance_Card.png" alt="Romance Card">
                 <h2><a href="romancecard-generator.html">Romance Card &hearts;</a></h2>
                 <p>a card for you and your lover. <br>(´｡• ᵕ •｡`)</p>
             </div>
         </div>
         <div class="product-row">
             <div class="product-box">
-                <img src="Friendship_Card.png" alt="Friendship Card">
+                <img src="img/Friendship_Card.png" alt="Friendship Card">
                 <h2><a href="friendshipcard-generator.html">Friendship Card &#9786;</a></h2>
                 <p>a card for a true friend. ₍ᐢ.  ̫.ᐢ₎</p>
             </div>
@@ -97,14 +93,14 @@
             <button><a href="card-request.html" class="sidebar-btn">Unique Card Request</a></button>
             <button>
                 <a href="https://patreon.com/ThreeCardGenerator" class="sidebar-btn" target="_blank">
-                    <img src="money-bag.svg" style="width: 30px; height: 20px;"> 
+                    <img src="img/money-bag.svg" style="width: 30px; height: 20px;"> 
                     Donate
                 </a>
             </button>
         </div>
 
         <div class="gif-container" style="display: flex; justify-content: center; align-items: center; height: 100vh;">
-            <img src="footer_gif.gif" alt="Lollipop GIF">
+            <img src="img/footer_gif.gif" alt="Lollipop GIF">
         </div>
 
         <div class="copyright-container">

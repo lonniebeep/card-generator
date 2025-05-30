@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generated Image</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Generated Image</h1>
+    </header>
+
+    <div class="image-container">
+        <img id="generatedImage" src="" alt="Generated Card" class="center-image">
+    </div>
+
+    <script>
+        // Fetch the image URL from the query parameter
+        const urlParams = new URLSearchParams(window.location.search);
+        const imageUrl = urlParams.get('image');
+
+        // Set the image source
+        document.getElementById('generatedImage').src = imageUrl;
+    </script>
+</body>
+</html>

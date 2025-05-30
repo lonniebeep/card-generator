@@ -11,16 +11,17 @@ const pool = new Pool({
   ssl: { rejectUnauthorized: false }
 });
 
-// Middleware to parse JSON and URL-encoded form data
+// Middleware to parse form data
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(express.static(path.join(__dirname)));
 
-// Route for form submission
+// Serve static files from root directory
+app.use(express.static(__dirname));
+
+// POST /submit route
 app.post('/submit', async (req, res) => {
     const { card_type, recipient_name, message } = req.body;
-
-    const backgroundImage = await loadImage(`./img/${card_type.replace(/\s+/g, '_')}.png`);
+    const backgroundImage = await loadImage(path.join(__dirname, `${card_type.replace(/\s+/g, '_')}.png`));
     const canvas = createCanvas(backgroundImage.width, backgroundImage.height);
     const ctx = canvas.getContext('2d');
     ctx.drawImage(backgroundImage, 0, 0, canvas.width, canvas.height);
@@ -32,7 +33,7 @@ app.post('/submit', async (req, res) => {
     ctx.fillText(message, canvas.width / 2, canvas.height / 2 + 40);
 
     const downloadLink = `/download_links/${card_type.toLowerCase()}_${recipient_name.replace(/\s+/g, '_')}.png`;
-    const filePath = `.${downloadLink}`;
+    const filePath = path.join(__dirname, downloadLink);
     const outputStream = createWriteStream(filePath);
     const stream = canvas.createPNGStream();
     stream.pipe(outputStream);
@@ -45,7 +46,7 @@ app.post('/submit', async (req, res) => {
                 return res.status(500).send('Database error');
             }
             console.log('Form data inserted into Postgres:', result);
-            res.redirect(`/generated-image.html?image=${encodeURIComponent(filePath)}`);
+            res.redirect(`/generated-image.html?image=${encodeURIComponent(downloadLink)}`);
         });
     });
 });

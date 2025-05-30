@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generated Image</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Generated Image</h1>
+    </header>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+    <div class="image-container">
+        <img id="generatedImage" src="" alt="Generated Card" class="center-image">
+    </div>
+    <div class="container">
+        <div class="content-box">
+    <button id="downloadPdf" class="btn">Download Card</button> <p>Thanks for using our generator!</p>
+        </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const imageUrl = urlParams.get('image');
+
+            console.log("Image URL:", imageUrl); // Debugging line
+
+            if (imageUrl) {
+                document.getElementById('generatedImage').src = imageUrl;
+            }
+        });
+
+        const downloadBtn = document.getElementById('downloadPdf');
+
+        downloadBtn.addEventListener('click', () => {
+            // Trigger download for the displayed image
+            const downloadLinkElem = document.createElement('a');
+            downloadLinkElem.href = document.getElementById('generatedImage').src;
+            downloadLinkElem.setAttribute('download', 'generated-image.png');
+            downloadLinkElem.click();
+        });
+    </script>
+</body>
+</html>
